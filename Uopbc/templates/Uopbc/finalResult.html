@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sentimental Analysis</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <h3>//Analysis Results</h3>
+                <p>{{searchTerm}}</p>
+            </div>
+            <div class="col-md-6 d-flex flex-wrap align-content-end justify-content-end">
+                <form class="ml-2" action={% url 'piefinalResult' %} method="post"> {% csrf_token %}
+                    <input type="hidden" value={{searchTerm}} name="nextData">
+                    <button class="btn btn-secondary">PIE Analysis</button>
+                    <a class="btn btn-primary " href={% url 'indexSearch' %}>Home</a>
+                </form>
+           
+
+
+            </div>
+        </div>
+
+
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    {% for i in resultWithPolarity.columns %}
+                    <th>{{i}}</th>
+                    {% endfor %}
+                </tr>
+              </thead>
+              <tbody>
+                {% for i in resultWithPolarity.values %}
+                <tr>
+                    {%for ai in i %}
+                    <td>{{ai}}</td>
+                  {% endfor %}
+                </tr>
+                {% endfor %}
+            </tbody>
+          </table>
+
+    </div>
+
+</body>
+
+</html>

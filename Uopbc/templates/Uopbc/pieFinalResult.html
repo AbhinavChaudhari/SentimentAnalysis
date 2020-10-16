@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pie Analysis</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+
+
+
+    <div class="container">
+        <div class="card">
+            <div class="card-header">
+                <h3>How people are reacting on <strong>{{ searchTerm }}</strong> by analyzing <strong>{{ NoOfTerms }}</strong> tweets.</h3>
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">General Report: <span class="text-info">{{generalReport}}</span></h5>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Detailed Report</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>{{positive}} %</strong>people thought it was positive"</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>{{wpositive}} %</strong> people thought it weakly positive"</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>{{spositive}} %</strong> people thought it strongly positive"</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>{{negative}} %</strong> people thought it was negative"</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>{{wnegative}} %</strong> people thought it was weakly negative"</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>{{snegative}} %</strong> people thought it was strongly negative"</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>{{neutral}} %</strong> people thought it was neutral"</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-sm-6">
+                        <img src="data:image/png;base64,{{ uri }}" class="img-fluid">
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+    <div class="container text-center">
+            <a class="btn btn-primary mt-4 " href={% url 'indexSearch' %}>Home</a>
+    </div>
+
+
+
+</body>
+
+</html>
